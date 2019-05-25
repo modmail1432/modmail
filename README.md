@@ -1,83 +1,92 @@
-<h1 align="center">Discord Mod Mail Bot</h1>
-
 <div align="center">
-    <strong><i>A simple and functional modmail bot.</i></strong>
-    <br>
-    <br>
+  <img src="https://i.imgur.com/o558Qnq.png" align="center">
+  <br>
+  <strong><i>A feature rich Modmail bot for Discord.</i></strong>
+  <br>
+  <br>
+    
+  <a href="https://heroku.com/deploy?template=https://github.com/kyb3r/modmail">
+    <img src="https://img.shields.io/badge/deploy_to-heroku-997FBC.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/kyb3r/modmail/">	
+    <img src="https://api.modmail.tk/badges/instances.svg" alt="Bot instances">	
+  </a>
+  <a href="https://discord.gg/j5e9p8w">
+    <img src="https://img.shields.io/discord/515071617815019520.svg?style=for-the-badge&colorB=7289DA" alt="Support">
+  </a>
+  
+  <a href="https://patreon.com/kyber">
+    <img src="https://img.shields.io/badge/patreon-donate-orange.svg?style=for-the-badge" alt="Python 3.7">
+  </a>
+  
+  <a href="https://github.com/kyb3r/modmail/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-mit-e74c3c.svg?style=for-the-badge" alt="MIT License">
+  </a>
 
-<a href="">
-  <img src="https://img.shields.io/badge/build-passing-7289DA.svg?style=for-the-badge" alt="Travis" />
-</a>
-
-<a href="">
-  <img src="https://img.shields.io/badge/python-3.6-7289DA.svg?style=for-the-badge" alt="Travis" />
-</a>
-
-<a href="https://github.com/kyb3r/modmail/blob/master/LICENSE">
-  <img src="https://img.shields.io/github/license/kyb3r/modmail.svg?style=for-the-badge&colorB=7289DA" alt="Travis" />
-</a>
-
-</div>
 <br>
-<div align="center">
-    This is an open source discord bot made by kyb3r and improved upon suggestions by the users! This bot enables server members to DM it, the messages then get relayed to the server moderators who can then respond through the bot. In essence this bot serves as a means for members to easily communicate with server leadership in an organised manner.
-
+<img src='https://i.imgur.com/fru5Q07.png' align='center' width=500>
 </div>
 
-## How does it work?
+
+## What is Modmail?
 
 
-<img src='https://i.imgur.com/aHtn4C5.png' align='right' height=140>
-
-Assuming you got the bot setup (Read below on how to set it up), the first thing that you would do is type the command ```<prefix>setup [modrole]``` where `[modrole]` is an optional role you can specify which determines who can see the relayed messages. If a role is not specified, the bot will choose the first role that has `manage guild` permissions as the modrole. The bot will then set up a channel category named `Mod Mail`.
-
-When a user sends a direct message to the bot, a channel is created within this new category. This channel is where messages will be relayed. To reply to a message, simply type the command `<prefix>reply <message>` in the channel.
-
-## What it looks like
-
-![a](https://i.imgur.com/LZCHeaR.jpg)
-
-<h1 align="center"><a href="https://github.com/kyb3r/modmail/wiki/Installation">Installation</a></h1>
-
-You have two options for using this bot, hosting on Heroku or self hosting the bot. If you choose to install the bot using Heroku, you do not need to download anything. In fact, you can set it all up on a phone! Read the installation guide [here](https://github.com/kyb3r/modmail/wiki/Installation). If you have any problems join our discord server [here](https://discord.gg/etJNHCQ).
-
-### What is Heroku?
-Heroku is a free hosting site that can host many web apps. However, the web apps cannot store any data on site (changing files). We have made Mod Mail to do exactly that. It was made to be *stateless* and not store any data in any files, utilising discord channel topics for tracking and relaying conversations.
-
-### Updating
-If you are keen to stay updated with the latest features then follow the updating guide [here](https://github.com/kyb3r/modmail/wiki/Updating). It has a few more steps so it may not be for everyone.
-
-## Commands
-
-| Name         | Description                                                          |
-|--------------|----------------------------------------------------------------------|
-| setup        | Sets up the categories that will be used by the bot.                 |
-| about        | Shows some general information about the bot.                        |
-| contact      | Allows a moderator to initiate a thread with a given recipient.      |
-| reply        | Sends a message to the current thread's recipient.                   |
-| close        | Closes the current thread and deletes the channel.                   |
-| archive      | Closes the thread and moves the channel to the archive category.     | 
-| block        | Blocks a user from using modmail                                     |
-| blocked      | Shows a list of users that are currently blocked                     |
-| unblock      | Unblocks a user from using modmail                                   |
-| snippets     | Shows a list of snippets that are currently configured.              |
-| customstatus | Sets the bot playing status to a message of your choosin             |
-| disable      | Closes all threads and disables modmail for the server.              |
-| update       | Checks for new versions and updates the bot, follow the [updating guide](https://github.com/kyb3r/modmail/wiki/Updating) to use this command. |
+Modmail's core functionality provides an efficient way for server members to communicate with server staff. When a member sends a direct message to the bot, a channel or "thread" is created within an isolated category for that member. This channel is where messages will be relayed and where any available staff member can respond to that user.
 
 ## Features
 
-### Snippets
-Snippets are shortcuts for predefined messages that you can send. You can add snippets by adding config variables by prefixing the name of the snippet with `SNIPPET_` and setting the value to what you want the message to be. For example you can make a snippet called `hi` by making a config variabled named `SNIPPET_hi`, you can then use the snippet by typing the command `?hi` in the thread you want to reply to.
 
-### Custom Mentions
-If you want the bot to mention a specific role instead of `@here`, you need to set a config variable `MENTION` and set the value to the mention of the role or user you want mentioned. To get the mention of a role or user, type `\@role` in chat and you will see something like `<@&515651147516608512>` use this string as the value for the config variable.
+* **Highly Customisable**
+  * Bot activity, prefix, category, log channel, etc.
+  * Fully customisable command permission system.
+  * Interface elements (color, responses, reactions, etc.)
+  * Snippets and *command aliases*
+  * Minimum account/guild age in order to create a thread.
+* **Thread logs**
+  * When you close a thread, a [log link](https://logs.modmail.tk/example) is generated and posted to your log channel.
+  * Rendered in styled HTML like Discord.
+  * Optional login in via Discord to protect your logs.
+  * See past logs of a user with `?logs`
+  * Searchable by text queries using `?logs search`
+* **Robust implementation**
+  * Scheduled tasks in human time, e.g. `?close in 2 hours silently`.
+  * Editing and deleting messages is synced on both ends.
+  * Support for the full range of message content (mutliple images, files).
+  * Paginated commands interfaces via reactions.
+  
+This list is ever growing thanks to active development and our exceptional contributors. See a full list of documented commands by using the `help` command.
 
-### Delete Linked Messages
-Did you accidentally send something you didnt mean to with the `reply` command? Dont fret, if you delete the original message on your side, this bot automatically deletes the corresponding message that was sent to the recipient of the thread! 
+## Installation
 
-## Thanks For Using This Bot!
+### Heroku
+Currently, the easiest way to set up the bot is by using Heroku, a container-based cloud platform. Installation via Heroku is done in your web browser and keeps the bot online 24/7 for free. The [**installation guide**](https://github.com/kyb3r/modmail/wiki/Installation) will guide you through the entire installation process. If you run into any problems, join the [development server](https://discord.gg/etJNHCQ) for help and support. 
 
-If you do use the bot, a star on this repository is appreciated!
+### Locally 
+Installation locally for development reasons or otherwise is as follows, you will need `python 3.7`.
 
-This project is licenced under MIT. Feel free to contribute to the development of this bot.
+Clone the repo
+```console
+$ git clone https://github.com/kyb3r/modmail
+$ cd modmail
+```
+
+Install dependancies
+```console
+$ pip install -r requirements.txt
+```
+
+Rename the `config.json.example` to `config.json` and fill out the fields. 
+And finally, run the bot.
+```console
+$ python3 bot.py
+```
+
+## Plugins
+
+Modmail supports the use of third party plugins to extend or add functionality to the bot. This allows the introduction of niche features as well as anything else outside of the scope of the core functionality of Modmail. A list of third party plugins can be found using the `plugins registry` command. To develop your own, check out the [documentation](https://github.com/kyb3r/modmail/wiki/Plugins) for plugins.
+
+## Contributing
+
+This project is licenced under MIT. Contributions to Modmail are always welcome, whether it be improvements to the documentation or new functionality, please feel free make the change. Check out our contribution [guidelines](https://github.com/kyb3r/modmail/blob/master/CONTRIBUTING.md) before you get started. 
+
+This bot is open source and always will be. If you like this project and would like to show your appreciation, heres the link for our **[Patreon](https://www.patreon.com/kyber)**. 
