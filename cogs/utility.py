@@ -324,6 +324,7 @@ class Utility(commands.Cog):
         embed.add_field(name="Latency", value=f"{self.bot.latency * 1000:.2f} ms")
         embed.add_field(name="Version", value=f"`{self.bot.version}`")
         embed.add_field(name="Authors", value="`kyb3r`, `Taki`, `fourjr`")
+        embed.add_field(name="Hosting Method", value=self.bot.hosting_method.name)
 
         changelog = await Changelog.from_url(self.bot)
         latest = changelog.latest_version
@@ -771,7 +772,7 @@ class Utility(commands.Cog):
                 title="Error", color=self.bot.error_color, description=f"{key} is an invalid key."
             )
             valid_keys = [f"`{k}`" for k in sorted(keys)]
-            embed.add_field(name="Valid keys", value=", ".join(valid_keys))
+            embed.add_field(name="Valid keys", value=truncate(", ".join(valid_keys), 1024))
 
         return await ctx.send(embed=embed)
 

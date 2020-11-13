@@ -1,4 +1,4 @@
-__version__ = "3.7.1"
+__version__ = "3.7.3"
 
 
 import asyncio
@@ -119,6 +119,8 @@ class ModmailBot(commands.Bot):
             logger.info("MODMAIL")
         logger.info("v%s", __version__)
         logger.info("Authors: kyb3r, fourjr, Taaku18")
+        logger.line()
+        logger.info("discord.py: v%s", discord.__version__)
         logger.line()
 
         for cog in self.loaded_cogs:
@@ -251,6 +253,21 @@ class ModmailBot(commands.Bot):
             self.prefix,
         )
         return None
+
+    @property
+    def mention_channel(self):
+        channel_id = self.config["mention_channel_id"]
+        if channel_id is not None:
+            try:
+                channel = self.get_channel(int(channel_id))
+                if channel is not None:
+                    return channel
+            except ValueError:
+                pass
+            logger.debug("MENTION_CHANNEL_ID was invalid, removed.")
+            self.config.remove("mention_channel_id")
+
+        return self.log_channel
 
     async def wait_for_connected(self) -> None:
         await self.wait_until_ready()
@@ -1002,7 +1019,7 @@ class ModmailBot(commands.Bot):
                 color=self.main_color,
                 timestamp=datetime.utcnow(),
             )
-            await self.log_channel.send(content=self.config["mention"], embed=em)
+            await self.mention_channel.send(content=self.config["mention"], embed=em)
 
         await self.process_commands(message)
 
@@ -1503,6 +1520,14 @@ def main():
         uvloop.install()
     except ImportError:
         pass
+
+    # check discord version
+    if discord.__version__ != "1.5.2":
+        logger.error(
+            "Dependencies are not updated, run pipenv install. discord.py version expected 1.5.2, recieved %s",
+            discord.__version__,
+        )
+        sys.exit(0)
 
     bot = ModmailBot()
     bot.run()
