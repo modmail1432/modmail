@@ -996,11 +996,10 @@ class Modmail(commands.Cog):
                     description = f"{ctx.author.name} has opened a Modmail thread."
 
                 em = discord.Embed(
-                    title="New Thread",
-                    description=description,
-                    color=self.bot.main_color,
-                    timestamp=datetime.utcnow(),
+                    title="New Thread", description=description, color=self.bot.main_color,
                 )
+                if self.bot.config["show_timestamp"]:
+                    em.timestamp = datetime.utcnow()
                 em.set_footer(icon_url=ctx.author.avatar_url)
                 await user.send(embed=em)
 
@@ -1148,7 +1147,7 @@ class Modmail(commands.Cog):
     async def block(
         self,
         ctx,
-        user_or_role: Union[User, discord.Role] = None,
+        user_or_role: Optional[Union[User, discord.Role]] = None,
         *,
         after: UserFriendlyTime = None,
     ):
